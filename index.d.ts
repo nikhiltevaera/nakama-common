@@ -367,6 +367,18 @@ declare namespace nkruntime {
         broadcastMessageDeferred(opcode: number, data?: ArrayBuffer | string | null, presences?: Presence[] | null, sender?: Presence, reliable?: boolean): void;
 
         /**
+         * Broadcast a message to match presences via webrtc.
+         *
+         * @param opcode - Numeric message op code.
+         * @param data - Opt. Data payload string, or null.
+         * @param presences - Opt. List of presences (a subset of match participants) to use as message targets, or null to send to the whole match. Defaults to null
+         * @param sender - Opt. A presence to tag on the message as the 'sender', or null.
+         * @param reliable - Opt. Broadcast the message with delivery guarantees or not. Defaults to true.
+         * @throws {TypeError, GoError}
+         */
+        BroadcastMessageWebrtc(opcode: number, data?: ArrayBuffer | string | null, presences?: Presence[] | null, sender?: Presence, reliable?: boolean): void;
+
+        /**
          * Kick presences from match.
          *
          * @param presences - List of presences to kick from the match.
